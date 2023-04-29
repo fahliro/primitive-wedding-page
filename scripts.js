@@ -59,3 +59,40 @@ button && button.addEventListener("click", sendResponse)
 AOS.init({
     duration: 1000
 })
+
+const eventDate = new Date("2023-07-01T09:00:00.000+08:00").getTime();
+const countDown = setInterval(() => {
+    const currentDate = new Date().getTime();
+    const timeLeft = eventDate - currentDate;
+        
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    const contentDays = document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(2)")
+    const contentHours = document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(3) > div:first-child")
+    const contentMinutes = document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(3) > div:nth-child(2)")
+    const contentSeconds = document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(3) > div:nth-child(3)")
+    
+    contentDays.innerHTML = `<b>${days}<br>Hari<b/>`
+    contentHours.innerHTML = `${hours}<br>Jam` 
+    contentMinutes.innerHTML = `${minutes}<br>Menit`
+    contentSeconds.innerHTML = `${seconds}<br>Detik`
+
+    if(seconds < 0 && seconds > -5) {
+        document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(2)").innerHTML = "Acara sedang berlangsung" + seconds
+        document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(3)").innerHTML = ""
+    } else if(seconds === -5) {
+        document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(2)").innerHTML = "Acara telah selesai"
+        clearInterval(countDown);
+    }
+
+    if (timeLeft < 0) {
+        // clearInterval(countDown);
+        // contentDays.innerHTML = "<b>0<br>Hari<b/>"
+        // contentHours.innerHTML = "0 <br>Jam" 
+        // contentMinutes.innerHTML = "0 <br>Menit"
+        // contentSeconds.innerHTML = "0 <br>Detik"
+    }
+}, 1000)
