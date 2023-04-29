@@ -39,9 +39,6 @@ const sendResponse = () => {
         handleButton({isSending: true})
         fetch(`https://docs.google.com/forms/d/e/1FAIpQLSdPI1LY5lHB_pKbqJQaAqxlII7t0CJiF9ZYXRCsv2Ry7BmFMA/formResponse?&submit=Submit?usp=pp_url&entry.1498135098=${guestName}&entry.877086558=${isComing ? "Hadir" : "Tidak Hadir"}&entry.1802854554=${message}`, {
             mode: "no-cors",
-            headers: {
-                "Access-Control-Allow-Origin":"*"
-            }
         }).then(() => {
             handleMessage("Berhasil terkirim. Terima kasih telah memberi respon kehadiran. Jazakumullah Khairan")
             resetForm()
