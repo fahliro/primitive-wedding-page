@@ -116,15 +116,13 @@ input[type="radio"] {
     height: calc(var(--vh100) - var(--padding20x2));
     /* background: red; */
 }
-.row > .col.content-right > div:first-child > div:not(:last-child):not(:nth-last-child(-n + 2)) {
-    padding-bottom: var(--px30);
-}
 .row > .col.content-right > div:first-child > div:nth-child(1) {
     font-size: var(--px20);
 }
 .row > .col.content-right > div:first-child > div:nth-child(2) {
     font-size: var(--px50);
     font-family: var(--dancing-script);
+    padding: var(--px30) 0 var(--px30) 0;
 }
 .row > .col.content-right > div:first-child > div:last-child {
     position: absolute;
