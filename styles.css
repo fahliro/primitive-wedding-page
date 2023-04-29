@@ -105,7 +105,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(var(--vh100) - var(--px20));
+    height: calc(var(--vh100) - var(--padding20x2));
     /* background: red; */
 }
 .row > .col.content-right > div:first-child > div:not(:last-child):not(:nth-last-child(-n + 2)) {
