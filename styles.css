@@ -12,6 +12,7 @@
     --disco: rgba(117, 19, 93, 0.73);
     
     --px1: 1px;
+    --px3: 3px;
     --px5: 5px;
     --px6: 6px;
     --px10: 10px;
@@ -305,6 +306,9 @@ input[type="radio"] {
 .row > .col.content-right > div:nth-child(9) > div:last-child > div:nth-child(4) > input, .row > .col.content-right > div:nth-child(9) > div:last-child > div:nth-child(5) > input {
     /* background: red; */
     cursor: pointer;
+}
+.row > .col.content-right > div:nth-child(9) > div:last-child > div:nth-child(4) {
+    padding-bottom: var(--px3);
 }
 .row > .col.content-right > div:nth-child(9) > div:last-child > div:nth-child(4), .row > .col.content-right > div:nth-child(9) > div:last-child > div:nth-child(5) {
     font-size: small; 
