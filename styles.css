@@ -101,6 +101,10 @@ a {
 textarea {
     resize: none;
 }
+input[type="radio"] {
+    margin-top: -1px;
+    vertical-align: middle;
+}
 
 /* Section 1 */
 .row > .col.content-right > div:first-child {
