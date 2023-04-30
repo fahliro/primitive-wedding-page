@@ -70,10 +70,10 @@ const countDown = setInterval(() => {
     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-    const contentDays = document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(2)")
-    const contentHours = document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(3) > div:first-child")
-    const contentMinutes = document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(3) > div:nth-child(2)")
-    const contentSeconds = document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(3) > div:nth-child(3)")
+    const contentDays = document.querySelector(".content-right > div:nth-child(5) > div:nth-child(2)")
+    const contentHours = document.querySelector(".content-right > div:nth-child(5) > div:nth-child(3) > div:first-child")
+    const contentMinutes = document.querySelector(".content-right > div:nth-child(5) > div:nth-child(3) > div:nth-child(2)")
+    const contentSeconds = document.querySelector(".content-right > div:nth-child(5) > div:nth-child(3) > div:nth-child(3)")
     
     contentDays.innerHTML = `<b>${days}<br>Hari<b/>`
     contentHours.innerHTML = `${hours}<br>Jam` 
@@ -81,10 +81,10 @@ const countDown = setInterval(() => {
     contentSeconds.innerHTML = `${seconds}<br>Detik`
 
     if(seconds < 0 && seconds > -5) {
-        document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(2)").innerHTML = "Acara sedang berlangsung" + seconds
-        document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(3)").innerHTML = ""
+        document.querySelector(".content-right > div:nth-child(5) > div:nth-child(2)").innerHTML = "Acara sedang berlangsung" + seconds
+        document.querySelector(".content-right > div:nth-child(5) > div:nth-child(3)").innerHTML = ""
     } else if(seconds === -5) {
-        document.querySelector(".row > .col.content-right > div:nth-child(5) > div:nth-child(2)").innerHTML = "Acara telah selesai"
+        document.querySelector(".content-right > div:nth-child(5) > div:nth-child(2)").innerHTML = "Acara telah selesai"
         clearInterval(countDown);
     }
 
