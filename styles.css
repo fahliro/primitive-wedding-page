@@ -142,6 +142,10 @@ input[type="radio"] {
     box-shadow: var(--box-shadow);
     color: var(--white);
 }
+.section-2 > div:first-child {
+    font-family: var(--dancing-script);
+    font-size: var(--px20);
+}
 .section-2 > div:not(:last-child) {
     padding-bottom: var(--px20);
 }
