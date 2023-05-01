@@ -23,6 +23,7 @@
     --px30: 30px;
     --px40: 40px;
     --px50: 50px;
+    --px60: 60px;
     --px100: 100px;
     --px300: 300px;
     --percent65: 65%; 
@@ -242,14 +243,14 @@ input[type="radio"] {
     justify-content: center;
     align-items: center;
     background: var(--disco05);
-    height: 60px;
-    width: 60px;
+    height: var(--px60);
+    width: var(--px60);
     border-radius: var(--px50);
 }
 .section-5 > div:nth-child(3) > div > div {
     background: var(--disco);
-    height: 50px;
-    width: 50px;
+    height: var(--px50);
+    width: var(--px50);
     border-radius: var(--px50);
     display: flex;
     justify-content: center;
