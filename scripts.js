@@ -60,39 +60,41 @@ AOS.init({
     duration: 1000
 })
 
-const eventDate = new Date("2023-07-01T09:00:00.000+08:00").getTime();
+const eventDate = new Date("2023-05-02T09:00:00.000+07:00").getTime();
 const countDown = setInterval(() => {
     const currentDate = new Date().getTime();
     const timeLeft = eventDate - currentDate;
-        
+    
     const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-    const contentDays = document.querySelector(".content-right > div:nth-child(5) > div:nth-child(2)")
-    const contentHours = document.querySelector(".content-right > div:nth-child(5) > div:nth-child(3) > div:first-child")
-    const contentMinutes = document.querySelector(".content-right > div:nth-child(5) > div:nth-child(3) > div:nth-child(2)")
-    const contentSeconds = document.querySelector(".content-right > div:nth-child(5) > div:nth-child(3) > div:nth-child(3)")
-    
-    contentDays.innerHTML = `<b>${days}<br>Hari<b/>`
-    contentHours.innerHTML = `${hours}<br>Jam` 
-    contentMinutes.innerHTML = `${minutes}<br>Menit`
-    contentSeconds.innerHTML = `${seconds}<br>Detik`
+    const contentDays = document.querySelector(".section-5 > div:nth-child(2)")
+    const contentHours = document.querySelector(".section-5 > div:nth-child(3) > div:first-child > div > div")
+    const contentMinutes = document.querySelector(".section-5 > div:nth-child(3) > div:nth-child(2) > div > div")
+    const contentSeconds = document.querySelector(".section-5 > div:nth-child(3) > div:nth-child(3) > div > div")
 
-    if(seconds < 0 && seconds > -5) {
-        document.querySelector(".content-right > div:nth-child(5) > div:nth-child(2)").innerHTML = "Acara sedang berlangsung" + seconds
-        document.querySelector(".content-right > div:nth-child(5) > div:nth-child(3)").innerHTML = ""
-    } else if(seconds === -5) {
-        document.querySelector(".content-right > div:nth-child(5) > div:nth-child(2)").innerHTML = "Acara telah selesai"
+    if(contentHours)contentDays.innerHTML = `<b>${days}<br>Hari<b/>`
+    if(contentHours) contentHours.innerHTML = `${hours}<br>Jam` 
+    if(contentMinutes) contentMinutes.innerHTML = `${minutes}<br>Menit`
+    if(contentSeconds) contentSeconds.innerHTML = `${seconds}<br>Detik`
+
+    const isLive = days <= 0 && hours <= 2 && minutes <= 59 && seconds <= 59
+    const isEnded = days === 0 && hours === 0 && minutes === 0 && seconds === 0
+
+    console.log({days, hours, minutes, seconds})
+
+    if(isEnded) {
+        document.querySelector(".section-5 > div:last-child").innerHTML = "Acara telah selesai"
+        document.querySelector(".section-5 > div:nth-child(2)").style.display = "none";
+        document.querySelector(".section-5 > div:nth-child(3)").style.display = "none";
         clearInterval(countDown);
-    }
-
-    if (timeLeft < 0) {
-        // clearInterval(countDown);
-        // contentDays.innerHTML = "<b>0<br>Hari<b/>"
-        // contentHours.innerHTML = "0 <br>Jam" 
-        // contentMinutes.innerHTML = "0 <br>Menit"
-        // contentSeconds.innerHTML = "0 <br>Detik"
+    } else if(isLive) {
+        document.querySelector(".section-5 > div:last-child").innerHTML = "Acara sedang berlangsung"
+        document.querySelector(".section-5 > div:nth-child(2)").style.display = "none";
+        document.querySelector(".section-5 > div:nth-child(3)").style.display = "none";
+    } else {
+        document.querySelector(".section-5 > div:last-child");
     }
 }, 1000)
