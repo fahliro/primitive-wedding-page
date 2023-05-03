@@ -60,10 +60,10 @@ AOS.init({
     duration: 1000
 })
 
-const eventDate = new Date("2023-05-02T09:00:00.000+07:00").getTime();
+const eventDate = new Date("2023-05-04T09:00:00.000+07:00");
 const countDown = setInterval(() => {
-    const currentDate = new Date().getTime();
-    const timeLeft = eventDate - currentDate;
+    const currentDate = new Date();
+    const timeLeft = eventDate.getTime() - currentDate.getTime();
     
     const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -80,21 +80,16 @@ const countDown = setInterval(() => {
     if(contentMinutes) contentMinutes.innerHTML = `${minutes}<br>Menit`
     if(contentSeconds) contentSeconds.innerHTML = `${seconds}<br>Detik`
 
-    const isLive = days <= 0 && hours <= 2 && minutes <= 59 && seconds <= 59
-    const isEnded = days === 0 && hours === 0 && minutes === 0 && seconds === 0
-
-    console.log({days, hours, minutes, seconds})
-
-    if(isEnded) {
-        document.querySelector(".section-5 > div:last-child").innerHTML = "Acara telah selesai"
-        document.querySelector(".section-5 > div:nth-child(2)").style.display = "none";
-        document.querySelector(".section-5 > div:nth-child(3)").style.display = "none";
-        clearInterval(countDown);
-    } else if(isLive) {
-        document.querySelector(".section-5 > div:last-child").innerHTML = "Acara sedang berlangsung"
-        document.querySelector(".section-5 > div:nth-child(2)").style.display = "none";
-        document.querySelector(".section-5 > div:nth-child(3)").style.display = "none";
-    } else {
-        document.querySelector(".section-5 > div:last-child");
+    if(timeLeft < 0) {
+        if(days >= -1 && hours >=  -2) {
+            document.querySelector(".section-5 > div:last-child").innerHTML = "Acara sedang berlangsung"
+            document.querySelector(".section-5 > div:nth-child(2)").style.display = "none";
+            document.querySelector(".section-5 > div:nth-child(3)").style.display = "none";
+        } else {
+            document.querySelector(".section-5 > div:last-child").innerHTML = "Acara telah selesai"
+            document.querySelector(".section-5 > div:nth-child(2)").style.display = "none";
+            document.querySelector(".section-5 > div:nth-child(3)").style.display = "none";
+            clearInterval(countDown);
+        }
     }
 }, 1000)
