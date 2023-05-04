@@ -60,7 +60,7 @@ AOS.init({
     duration: 1000
 })
 
-const eventDate = new Date("2023-05-04T09:00:00.000+07:00");
+const eventDate = new Date("2023-07-01T09:00:00.000+08:00");
 const countDown = setInterval(() => {
     const currentDate = new Date();
     const timeLeft = eventDate.getTime() - currentDate.getTime();
